@@ -15,7 +15,10 @@ import { artists } from "./features/marketplace/data/artists"
 
 import {
   createOrder,
+  getCurrentOrderDateTime,
 } from "./features/orders/utils/orderHelpers"
+
+import { ORDER_STATUS } from "./features/orders/constants/orderStatus"
 
 import { useOrderActions } from "./features/orders/hooks/useOrderActions"
 
@@ -298,9 +301,82 @@ const [likedArtistIdsByUser, setLikedArtistIdsByUser] = useState(() => {
 
   const [showDeletePopup, setShowDeletePopup] = useState(false)
 
-  useEffect(() => {
-  const savedUser = getCurrentUser()
+  const getDemoArtistOrder = () => ({
+  id: 260602001,
+  artistId: 1,
+  artist: "azazarine",
+  buyer: "unainaina",
+  buyerId: "demo-buyer",
+  buyerEmail: "buyer-demo@pickarya.test",
+  product: "#poster",
+  productCoverImageUrl: "",
+  priceRange: "Rp25.000 - Rp35.000",
+  totalPrice: null,
+  quantity: 1,
+  description:
+    "Halo kak, saya ingin memesan desain poster promosi untuk event kampus. Konsepnya simple, modern, dan warnanya menyesuaikan tema Pickarya.",
+  status: ORDER_STATUS.WAITING,
+  createdAt: getCurrentOrderDateTime(),
+  rejectedAt: null,
+  cancelledAt: null,
+  acceptedAt: null,
+  paymentConfirmedAt: null,
+  processedAt: null,
+  resultUploadedAt: null,
+  revisionRequestedAt: null,
+  revisionUploadedAt: null,
+  approvedAt: null,
+  completedAt: null,
+  paymentProofLink: "",
+  resultLink: "",
+  revisionNote: "",
+  revisionLink: "",
+  finalLink: "",
+})
 
+  useEffect(() => {
+  const path = window.location.pathname.toLowerCase()
+
+  if (path === "/buyer") {
+    const demoBuyer = {
+      id: "demo-buyer",
+      name: "unainaina",
+      username: "unainaina",
+      email: "buyer-demo@pickarya.test",
+      role: "buyer",
+    }
+
+    setCurrentUser(demoBuyer)
+    setIsLoggedIn(true)
+    setRole("buyer")
+    setCurrentPage("home")
+    setActiveSidebar("orders")
+    setActiveOrderStatus("waiting")
+    setOrders([])
+    return
+  }
+
+  if (path === "/artist") {
+    const demoArtist = {
+      id: 1,
+      name: "azazarine",
+      username: "azazarine",
+      email: "artist-demo@pickarya.test",
+      role: "artist",
+      artistLevel: "professional",
+    }
+
+    setCurrentUser(demoArtist)
+    setIsLoggedIn(true)
+    setRole("artist")
+    setOrders([getDemoArtistOrder()])
+    setCurrentPage("profile")
+    setActiveSidebar("orders")
+    setActiveOrderStatus("artist_incoming")
+    return
+  }
+
+  const savedUser = getCurrentUser()
   if (!savedUser) return
 
   setCurrentUser(savedUser)
@@ -623,8 +699,11 @@ setDeletedArtistKeys((prevKeys) => {
     currentUser,
   })
 
-  setOrders([newOrder, ...orders].filter(Boolean))
-  setCurrentPage("home")
+  setOrders((prevOrders) => [newOrder, ...prevOrders].filter(Boolean))
+  setCurrentPage("profile")
+  setActiveSidebar("orders")
+  setActiveOrderStatus("waiting")
+
   setSelectedProduct(null)
   setQuantity("")
   setDescription("")

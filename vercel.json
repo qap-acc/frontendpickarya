@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/buyer",
+      "destination": "/"
+    },
+    {
+      "source": "/artist",
+      "destination": "/"
+    }
+  ]
+}
