@@ -304,13 +304,13 @@ const [likedArtistIdsByUser, setLikedArtistIdsByUser] = useState(() => {
   const getDemoArtistOrder = () => ({
   id: 260602001,
   artistId: 1,
-  artist: "azazarine",
-  buyer: "unainaina",
+  artist: "artist1",
+  buyer: "buyer1",
   buyerId: "demo-buyer",
   buyerEmail: "buyer-demo@pickarya.test",
   product: "#poster",
-  productCoverImageUrl: "",
-  priceRange: "Rp25.000 - Rp35.000",
+  productCoverImageUrl: "/prototypeIMG/artist1-porto-3.png",
+  priceRange: "Rp45.000 - Rp63.000",
   totalPrice: null,
   quantity: 1,
   description:
@@ -340,8 +340,8 @@ const [likedArtistIdsByUser, setLikedArtistIdsByUser] = useState(() => {
   if (path === "/buyer") {
     const demoBuyer = {
       id: "demo-buyer",
-      name: "unainaina",
-      username: "unainaina",
+      name: "buyer1",
+      username: "buyer1",
       email: "buyer-demo@pickarya.test",
       role: "buyer",
     }
@@ -359,8 +359,8 @@ const [likedArtistIdsByUser, setLikedArtistIdsByUser] = useState(() => {
   if (path === "/artist") {
     const demoArtist = {
       id: 1,
-      name: "azazarine",
-      username: "azazarine",
+      name: "artist1",
+      username: "artist1",
       email: "artist-demo@pickarya.test",
       role: "artist",
       artistLevel: "professional",

@@ -28,7 +28,12 @@ export function createOrder({
     buyerId: currentUser?.id || null,
     buyerEmail: currentUser?.email || "",
     product: selectedProduct.tag,
-    productCoverImageUrl: selectedProduct.coverImageUrl || "",
+    productCoverImageUrl:
+  selectedProduct?.coverImageUrl ||
+  selectedProduct?.imageUrl ||
+  selectedArtist?.coverImageUrl ||
+  selectedArtist?.portfolioPages?.[0]?.imageUrl ||
+  "",
     priceRange: selectedProduct.price,
     totalPrice: null,
     quantity,

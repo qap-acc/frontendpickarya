@@ -1,10 +1,10 @@
 export const DEFAULT_BUYER = {
-  name: "unainaina",
+  name: "buyer1",
 }
 
 export const DEFAULT_ARTIST = {
   id: 1,
-  name: "azazarine",
+  name: "artist1",
 }
 
 export const MARKETPLACE_CATEGORIES = [

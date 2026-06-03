@@ -104,13 +104,19 @@ if (!selectedArtist) {
           <div className="flex items-center gap-4">
   <ProfileAvatar
     imageUrl={selectedArtist.profilePhotoUrl}
-    sizeClass="w-[58px] h-[58px]"
-    iconClass="text-[30px]"
+    sizeClass="w-[70px] h-[70px]"
+    iconClass="text-[34px]"
   />
 
-  <p className="text-[32px] font-semibold leading-[28px]">
-    {selectedArtist.name}
-  </p>
+  <div>
+    <h1 className="font-bold text-[32px]">
+      {selectedArtist.name}
+    </h1>
+
+    <p className="text-[18px] text-[#777]">
+      @{selectedArtist.username || selectedArtist.name}
+    </p>
+  </div>
 </div>
 
           <p className="text-[20px] text-[#666666] mt-1">

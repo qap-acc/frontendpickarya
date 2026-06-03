@@ -1,5 +1,6 @@
 import { FiHeart } from "react-icons/fi"
 import { FaHeart } from "react-icons/fa"
+import ProfileAvatar from "../../../shared/components/ProfileAvatar"
 
 const LEVEL_LABELS = {
   beginner: "Beginner",
